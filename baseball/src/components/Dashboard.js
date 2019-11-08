@@ -15,7 +15,8 @@ export const Dashboard = (props) => {
             props.addStrike()
         }
         if (props.strikes === 2) {
-            props.reset()
+            props.reset();
+            handleOut();
         }
     }
 
@@ -29,12 +30,22 @@ export const Dashboard = (props) => {
         props.reset()
     }
 
+    const handleOut = () => {
+        if (props.outs < 2) {
+            props.addOut()
+        }
+        if (props.outs === 2) {
+            props.resetAll()
+        }
+    }
+
     return(
-        <div>
+        <div className='buttons'>
             <button onClick={handleBall}>Ball</button>
             <button onClick={handleStrike}>Strike</button>
             <button onClick={handleFoul}>Foul</button>
             <button onClick={handleHit}>Hit</button>
+            <button onClick={handleOut}>Out</button>
         </div>
     )
 }
